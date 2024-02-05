@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import * as z from "zod";
@@ -62,9 +62,7 @@ export const InitialModal = () => {
 
             form.reset();
             router.refresh();
-        } catch (error) {
-            
-        }
+        } catch (error) { }
     };
 
     if (!isMounted) {

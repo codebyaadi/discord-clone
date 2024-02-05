@@ -21,21 +21,17 @@ export async function POST(req: Request) {
                 imageUrl,
                 inviteCode: uuidv4(),
                 channels: {
-                    create: [
-                        { name: "general", profileId: profile.id }
-                    ]
+                    create: [{ name: "general", profileId: profile.id }],
                 },
                 members: {
-                    create: [
-                        { profileId: profile.id, role: MemberRole.ADMIN }
-                    ]
-                }
-            }
+                    create: [{ profileId: profile.id, role: MemberRole.ADMIN }],
+                },
+            },
         });
 
         return NextResponse.json(server);
-    } catch (error) { 
+    } catch (error) {
         console.log("SERVERS_POST", error);
         return new NextResponse("Internal Error", { status: 500 });
-     }
+    }
 }
