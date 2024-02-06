@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
-import { Open_Sans } from "next/font/google";
 
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-
-const openSans = Open_Sans({ subsets: ["latin"] });
+import { fontOpenSans, fontPrompt } from "@/lib/fonts";
+import { ThemeProvider } from "@/providers/theme-provider";
+import { ModalProvider } from "@/providers/modal-provider";
 
 export const metadata: Metadata = {
   title: "Discord Clone",
@@ -21,13 +20,20 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={cn(openSans.className, "bg-white dark:bg-[#313338]")}>
+        <body
+          className={cn(
+            fontOpenSans.className,
+            fontPrompt.variable,
+            "bg-white dark:bg-[#313338]"
+          )}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem={false}
             storageKey="discord-clone-theme"
           >
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>

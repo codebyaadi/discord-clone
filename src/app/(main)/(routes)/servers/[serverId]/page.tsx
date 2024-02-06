@@ -1,6 +1,6 @@
 const ServerIdPage = () => {
     return ( 
-        <div>
+        <div className="font-prompt">
             Server ID Page
         </div>
      );
